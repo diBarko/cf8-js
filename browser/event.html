@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+</head>
+<body>
+
+  <!-- Static event handling -->
+  <!-- <button type="button" id="btn" onclick="sayHello()">Click Me</button>-->  
+  <!-- Dynamic event handling -->
+  <button type="button" id="btn">Click Me</button>
+
+  <script>
+    const helloBtn = document.querySelector('#btn')
+
+    // Register onclick event - Handler is expression function
+    // helloBtn.onclick = function () {
+    //   alert('Hello Coding Factory!')
+    // }
+
+
+    // helloBtn.addEventListener('click', sayHello);
+    // function sayHello() {
+    //   alert('Hello Coding Factory!')
+    // }
+    
+    // If btn is in div, and both have even listeners, setting false parameter orders button listener to be executed first, then the div listener
+    helloBtn.addEventListener('click', function () {
+      alert('Hello Coding Factory!')
+    }, false)
+  </script>
+</body>
+</html>
