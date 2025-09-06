@@ -19,10 +19,11 @@ function updateBg() {
 }
 
 function getBgColor() {
-  const letters = ['A', 'B', 'C', 'D', 'E', 'F']
-  const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-  const hexChars = [...letters, ...digits]
+  // const letters = ['A', 'B', 'C', 'D', 'E', 'F']
+  // const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  // const hexChars = [...letters, ...digits]
 
+  const hexChars = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   let randomColor = '#'
   for (let i = 1; i <= 6; i++) {
     randomColor += hexChars[Math.floor(Math.random() * hexChars.length)]
