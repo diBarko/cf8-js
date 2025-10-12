@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async/Await Fetch API POST</title>
+</head>
+<body>
+  <button id="btn" type="button">Click to post data</button>
+  <p id="output"></p>
+
+  <script>
+    document.getElementById('btn').addEventListener('click', async () => {
+      try {
+        const payload = {
+          userId: 1,
+          title: "Coding",
+          body: "Coding Factory JS Course"
+        }
+
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        }
+
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts', options)
+        if (!response.ok) throw new Error('Invalid Response')
+        let data = await response.json()
+         document.getElementById('output').innerHTML = `<strong>Post Id: </strong>${data.id}
+                                                                   <br>
+                                                                   <strong>Post Title: </strong>${data.title}
+                                                                   <br>
+                                                                   <strong>Post Body: </strong>${data.body}`    
+      } catch (error) {
+          console.error("Error: ", error)
+          document.getElementById('output').innerHTML = `Error Fetching Data: ${error.message} .`
+      }
+    })
+  </script>
+</body>
+</html>
