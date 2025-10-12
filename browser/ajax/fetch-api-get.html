@@ -22,7 +22,9 @@
 
       })
       .then(data => {        
-        document.getElementById('responseText').innerHTML = `<strong>Title:</strong> ${data.title}`
+        document.getElementById('responseText').innerHTML = `<strong>Title:</strong> ${data.title}
+                                                             <br>
+                                                             <strong>Body:</strong> ${data.body}`
       })
       .catch(error => console.error("Error: " + error + "."))
     }
