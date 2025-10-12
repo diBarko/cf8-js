@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+  <title>Axios POST</title>
+</head>
+<body>
+  <h1>Axios POST</h1>
+  <button type="button" onclick="createPost()">Send POST</button>
+  <p id="responseText">-</p>
+
+  <script>
+    const payload = {
+      userId: 1,
+      title: "Coding",
+      body: "Coding Factory JS Course"
+    }
+    
+    const createPost = () => {
+      axios.post('https://jsonplaceholder.typicode.com/posts', payload)
+           .then(response => {
+              document.getElementById('responseText').innerHTML = `<strong>Post Id: </strong>${response.data.id}
+                                                                   <br>
+                                                                   <strong>Post Title: </strong>${response.data.title}
+                                                                   <br>
+                                                                   <strong>Post Body: </strong>${response.data.body}`
+           })
+           .catch(error => {
+              console.error(`Error: ${error} \nError details: ${error.message}.`) // Logging
+              document.getElementById('responseText').innerHTML = `Error: ${error} \nError details: ${error.message}.`
+              document.getElementById('responseText').innerHTML = `Error: ${[error.response?.data?.errorCode]}.`
+           })
+    }
+
+    const grLocalizations = {
+      PostNotFound: "Το post δεν βρέθηκε.",
+      PostAlreadyExists: "Το post υπάρχει ήδη."
+    }
+  </script>
+</body>
+</html>
